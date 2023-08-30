@@ -27,7 +27,6 @@ tlp
 tlp-rdw
 udisks2
 
-blueman
 bluez
 bluez-hid2hci
 bluez-plugins
@@ -38,12 +37,10 @@ dhclient
 iwd
 modemmanager
 net-tools
-network-manager-applet
 wireless-regdb
 
 git
 
-pavucontrol
 pipewire
 pipewire-alsa
 pipewire-audio
