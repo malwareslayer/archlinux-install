@@ -28,9 +28,7 @@ tlp-rdw
 udisks2
 
 bluez
-bluez-hid2hci
-bluez-plugins
-bluez-tools
+bluez-utils
 bolt
 
 dhclient
