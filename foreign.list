@@ -7,7 +7,5 @@ all-repository-fonts
 
 preload
 
-bluez-utils-compat
-
 networkmanager-iwd
 networkmanager-iwd-overlay
