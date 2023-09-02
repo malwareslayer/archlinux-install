@@ -13,6 +13,7 @@ dbus-broker
 fscrypt
 fwupd
 fwupd-efi
+gpm
 linux-zen
 linux-zen-headers
 lvm2
