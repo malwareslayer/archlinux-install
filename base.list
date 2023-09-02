@@ -19,6 +19,8 @@ lvm2
 man-db
 pkgfile
 plocate
+reflector
+rtkit
 seatd
 smartmontools
 systemd-resolvconf
