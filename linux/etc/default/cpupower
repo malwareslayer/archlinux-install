@@ -10,7 +10,7 @@
 # Specific frequency to be set.
 # Requires userspace governor to be available.
 # Do not set governor field if you use this one.
-# freq="4.0GHz"
+# freq=
 
 # Utilizes cores in one processor package/socket first before processes are
 # scheduled to other processor packages/sockets.
