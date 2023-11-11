@@ -14,11 +14,11 @@ Note: Don't use fscrypt (encrypt) if you don't need it and change homed.conf `De
 ```
 # tweak user options: rw,relatime,journal_checksum,delalloc,data=ordered
 
-tmpfs						/tmp            tmpfs		rw,relatime,nodev,nosuid,size=16G 0 0
+tmpfs		/tmp            tmpfs		rw,relatime,nodev,nosuid,size=16G 0 0
 
-/tmp                        /var/tmp        none		rw,relatime,nodev,nosuid,bind 0 0
+/tmp            /var/tmp        none		rw,relatime,nodev,nosuid,bind 0 0
 
-hugetlbfs					/dev/hugepages	hugetlbfs	rw,relatime,mode=01770,gid=kvm 0 0
+hugetlbfs	/dev/hugepages	hugetlbfs	rw,relatime,mode=01770,gid=kvm 0 0
 ```
 
 ### user
