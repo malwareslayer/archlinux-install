@@ -35,7 +35,7 @@ homectl update <username> \
     --setenv="GOMODCACHE=$XDG_CACHE_HOME/go/pkg/mod" \
     --setenv="GOPATH=$XDG_DATA_HOME/go" \
     --setenv="MOZ_ENABLE_WAYLAND=1" \
-    --setenv="GDK_BACKEND=wayland,x11" \
+    --setenv="GDK_BACKEND=wayland-egl,wayland,x11" \
     --setenv="QT_QPA_PLATFORM=wayland-egl;wayland;xcb" \
     --setenv="QT_QPA_PLATFORMTHEME=gtk4" \
     --setenv="QT_AUTO_SCREEN_SCALE_FACTOR=1"
