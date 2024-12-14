@@ -35,7 +35,7 @@ lvcreate -l+100%FREE --name <user name> system
 ## File System
 
 ```
-mkfs.fat -F /dev/nvmeXnYpZ
+mkfs.fat -F 32 /dev/nvmeXnYpZ
 ```
 
 **Note**: some `/boot` should be for bootable extended
