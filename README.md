@@ -72,7 +72,7 @@ homectl create <user name> \
     --luks-cipher=aes \
     --luks-cipher-mode=xts-plain64 \
     --luks-pbkdf-type=argon2id \
-    --luks-pbkdf-hash-algorithm=sha512 \
+    --luks-pbkdf-hash-algorithm=sha256 \
     --luks-pbkdf-time-cost=4 \
     --luks-pbkdf-memory-cost=67108864 \
     --luks-pbkdf-parallel-threads=4 \
