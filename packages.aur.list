@@ -1,0 +1,43 @@
+# Graphics
+
+amf-amdgpu-pro
+lib32-amdgpu-pro-oglp
+lib32-vulkan-amdgpu-pro
+
+# Application
+
+burpsuite
+chrome-google-beta
+jetbrains-toolbox
+
+# Utility
+
+all-repository-fonts
+insync
+needrestart
+pam_ssh
+preload
+yay
+
+# Firmware
+
+aic94xx-firmware
+aic94xx-firmware
+ast-firmware
+upd72020x-fw
+wd719x-firmware
+
+# Desktop
+
+bibata-cursor-theme
+yaru-colors-gtk-theme
+yaru-colors-icon-theme
+yaru-colors-wallpapers
+yaru-gnome-shell-theme
+yaru-gtk-theme
+yaru-gtksourceview-theme
+yaru-icon-theme
+yaru-metacity-theme
+yaru-session
+yaru-sound-theme
+yaru-unity-theme
