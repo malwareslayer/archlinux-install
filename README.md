@@ -98,7 +98,8 @@ homectl update <username> \
     --setenv="GDK_BACKEND=wayland" \
     --setenv="QT_QPA_PLATFORM=wayland" \
     --setenv="QT_AUTO_SCREEN_SCALE_FACTOR=1" \
-    --setenv="QT_QPA_PLATFORMTHEME=qt5ct"
+    --setenv="QT_QPA_PLATFORMTHEME=qt5ct" \
+    --setenv="SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh"
 ```
 
 ## File System Table
