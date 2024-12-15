@@ -5,7 +5,7 @@
 ### Physical Volume
 
 ```
-pvcreate --dataalignment 2m --metadatasize 2m /dev/nvmeXnYpZ
+pvcreate --dataalignment 1m --metadatasize 2m /dev/nvmeXnYpZ
 ```
 
 ### Volume Group
@@ -26,7 +26,7 @@ For `root`
 lvcreate -l+100%FREE --name root system
 ```
 
-For `<user name>`
+For `<username>`
 
 ```
 lvcreate -l+100%FREE --name <user name> system
@@ -48,45 +48,34 @@ For `root`
 mkfs.ext4 -O 64bit,bigalloc,dir_index,dir_nlink,ea_inode,ext_attr,extent,encrypt,extra_isize,fast_commit,filetype,flex_bg,has_journal,huge_file,inline_data,large_dir,large_file,metadata_csum,metadata_csum_seed,orphan_file,orphan_present,resize_inode,sparse_super,sparse_super2,stable_inodes,verity /dev/X/Y
 ```
 
-For `<user name>`
+For `<username>`
 
 ```
-mkfs.ext4 -O 64bit,bigalloc,dir_index,dir_nlink,ea_inode,ext_attr,extent,encrypt,extra_isize,fast_commit,filetype,flex_bg,has_journal,huge_file,inline_data,large_dir,large_file,metadata_csum,metadata_csum_seed,orphan_file,orphan_present,resize_inode,sparse_super,sparse_super2,stable_inodes,verity /dev/X/Y
-```
-
-```
-homectl create <user name> \
+homectl create <username> \
     --real-name="" \
     --email-addres="" \
     --location="Asia/Jakarta" \
     --timezone="Asia/Jakarta" \
-    --capability-bounding-set=CAP_NET_BIND_SERVICE,CAP_SYS_NICE,CAP_SYS_TIME \
-    --capability-ambient-set=CAP_BPF,CAP_PERFMON \
     --shell="/usr/bin/fish" \
     --drop-caches=true \
     --fs-type=ext4 \
     --storage=luks \
     --luks-discard=true \
     --luks-offline-discard=true \
-    --luks-volume-key-size=512 \
-    --luks-cipher=aes \
-    --luks-cipher-mode=xts-plain64 \
     --luks-pbkdf-type=argon2id \
     --luks-pbkdf-hash-algorithm=sha256 \
-    --luks-pbkdf-time-cost=4 \
-    --luks-pbkdf-memory-cost=67108864 \
-    --luks-pbkdf-parallel-threads=4 \
-    --luks-sector-size=4096 \
     --home-dir="/home/<user name>" \
-    --image-path=/dev/home/<user name> \
+    --image-path=/dev/nvmeXnY
 ```
 
 After Installation
 
 ```
-homectl update <user name> \
-    --avatar="<path to profile avatar>" \
-    --setenv="PATH=/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/local/bin:/usr/local/sbin" \
+homectl update <username> --capability-ambient-set=CAP_BPF CAP_PERFMON CAP_NET_BIND_SERVICE CAP_SYS_NICE CAP_SYS_TIME
+```
+
+```
+homectl update <username> \
     --setenv="XDG_CONFIG_HOME=$HOME/.config" \
     --setenv="XDG_CACHE_HOME=$HOME/.cache" \
     --setenv="XDG_DATA_HOME=$HOME/.local/share" \
@@ -95,8 +84,9 @@ homectl update <user name> \
     --setenv="XDG_RUNTIME_DIR=/run/user/$(id -u)" \
     --setenv="XDG_DATA_DIRS=/usr/share:/usr/local/share:$XDG_DATA_HOME:$XDG_DATA_HOME/flatpak/exports/share:/var/lib/flatpak/exports/share" \
     --setenv="GOPATH=$XDG_DATA_HOME/go" \
-    --setenv="GOCACHE=$XDG_CACHE_HOME/go/build" \
-    --setenv="GOMODCACHE=$XDG_CACHE_HOME/go/mod" \
+    --setenv="GOCACHE=$XDG_CACHE_HOME/go/" \
+    --setenv="GOMODCACHE=$XDG_DATA_HOME/go/pkg/mod" \
+    --setenv="GOBIN=$HOME/.local/bin" \
     --setenv="LIBVA_DRIVER_NAME=radeonsi" \
     --setenv="VDPAU_DRIVER=radeonsi" \
     --setenv="AMD_VULKAN_ICD=RADV" \
@@ -108,9 +98,7 @@ homectl update <user name> \
     --setenv="GDK_BACKEND=wayland" \
     --setenv="QT_QPA_PLATFORM=wayland" \
     --setenv="QT_AUTO_SCREEN_SCALE_FACTOR=1" \
-    --setenv="QT_QPA_PLATFORMTHEME=qt5ct" \
-    --setenv="DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock" \
-    --setenv="DOCKER_SOCK=$XDG_RUNTIME_DIR/podman/podman.sock" \
+    --setenv="QT_QPA_PLATFORMTHEME=qt5ct"
 ```
 
 ## File System Table
