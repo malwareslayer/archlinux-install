@@ -7,6 +7,13 @@ set -g theme_title_display_process yes
 set -g theme_title_display_path yes
 set -g theme_title_display_user yes
 
+set -g theme_display_ruby yes
+set -g theme_display_virtualenv yes
+set -g theme_display_node yes
+set -g theme_display_go verbose
+
+set -g theme_display_git yes
+
 set -g theme_powerline_fonts yes
 set -g theme_nerd_fonts yes
 set -g theme_color_scheme dark
