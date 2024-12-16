@@ -7,3 +7,4 @@ create_default_packages:
   - pip
   - ipython
   - marimo
+  - sage
