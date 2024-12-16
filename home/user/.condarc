@@ -1,0 +1,9 @@
+auto_activate_base: false
+channels:
+  - defaults
+  - conda-forge
+channel_priority: strict
+create_default_packages:
+  - pip
+  - ipython
+  - marimo
