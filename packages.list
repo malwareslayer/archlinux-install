@@ -14,6 +14,7 @@ linux-zen-headers
 
 # Application
 
+ghidra
 inkscape
 podman
 shotwell
@@ -46,6 +47,7 @@ sbctl
 seatd
 systemd-resolvconf
 smartmontools
+tmux
 tlp
 tlp-rdw
 tmux
@@ -88,3 +90,5 @@ vulkan-radeon
 vulkan-tools
 xf86-video-amdgpu
 xf86-video-dummy
+xorg-mkfontscale
+xorg-server-xvfb
