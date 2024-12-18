@@ -1,11 +1,11 @@
 set -g theme_display_jobs_verbose yes
-set -g theme_display_user yes
-set -g theme_display_hostname yes
+set -g theme_display_user no
+set -g theme_display_hostname no
 set -g theme_display_screen yes
 
 set -g theme_title_display_process yes
 set -g theme_title_display_path yes
-set -g theme_title_display_user yes
+set -g theme_title_display_user no
 
 set -g theme_display_ruby yes
 set -g theme_display_virtualenv yes
