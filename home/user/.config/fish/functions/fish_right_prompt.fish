@@ -4,26 +4,76 @@ function __bobthefish_cmd_duration -S -d 'Show command duration'
     [ "$theme_display_cmd_duration" = "no" ]
     and return
 
-    [ -z "$CMD_DURATION" -o "$CMD_DURATION" -lt 100 ]
-    and return
+    if [ -z "$CMD_DURATION" -o "$CMD_DURATION" -lt 100 ]
+        set_color normal
+        set_color -b black white --bold
 
-    if [ "$CMD_DURATION" -lt 5000 ]
-        echo -ns $CMD_DURATION 'ms'
-    else if [ "$CMD_DURATION" -lt 60000 ]
-        __bobthefish_pretty_ms $CMD_DURATION s
-    else if [ "$CMD_DURATION" -lt 3600000 ]
-        set_color $fish_color_error
-        __bobthefish_pretty_ms $CMD_DURATION m
-    else
-        set_color $fish_color_error
-        __bobthefish_pretty_ms $CMD_DURATION h
+        echo -ns $__bobthefish_left_arrow_glyph
+
+        return
     end
 
-    set_color $fish_color_normal
-    set_color $fish_color_autosuggestion
+    if [ "$CMD_DURATION" -lt 5000 ]
+        set_color normal
+        set_color -b black blue --bold
 
-    [ "$theme_display_date" = "no" ]
-    or echo -ns ' ' $__bobthefish_left_arrow_glyph
+        echo -ns ' ' $__bobthefish_left_arrow_glyph
+
+        set_color normal
+        set_color -b blue black --bold
+
+        echo -ns $CMD_DURATION 'ms'
+
+        set_color normal
+        set_color -b blue white --bold
+
+        echo -ns ' ' $__bobthefish_left_arrow_glyph
+    else if [ "$CMD_DURATION" -lt 60000 ]
+        set_color normal
+        set_color -b black green --bold
+
+        echo -ns ' ' $__bobthefish_left_arrow_glyph
+
+        set_color normal
+        set_color -b green black --bold
+
+        __bobthefish_pretty_ms $CMD_DURATION s
+
+        set_color normal
+        set_color -b green white --bold
+
+        echo -ns ' ' $__bobthefish_left_arrow_glyph
+    else if [ "$CMD_DURATION" -lt 3600000 ]
+        set_color normal
+        set_color -b black yellow --bold
+
+        echo -ns ' ' $__bobthefish_left_arrow_glyph
+
+        set_color normal
+        set_color -b yellow black --bold
+
+        __bobthefish_pretty_ms $CMD_DURATION m
+
+        set_color normal
+        set_color -b yellow white --bold
+
+        echo -ns ' ' $__bobthefish_left_arrow_glyph
+    else
+        set_color normal
+        set_color -b black red --bold
+
+        echo -ns ' ' $__bobthefish_left_arrow_glyph
+
+        set_color normal
+        set_color -b red black --bold
+
+        __bobthefish_pretty_ms $CMD_DURATION h
+
+        set_color normal
+        set_color -b red white --bold
+
+        echo -ns ' ' $__bobthefish_left_arrow_glyph
+    end
 end
 
 function __bobthefish_pretty_ms -S -a ms -a interval -d 'Millisecond formatting for humans'
@@ -67,19 +117,13 @@ function __bobthefish_timestamp -S -d 'Show the current timestamp'
 end
 
 function fish_right_prompt -d 'bobthefish is all about the right prompt'
-    set_color black white
-    set_color -b white black --bold
-    set -l __bobthefish_left_arrow_glyph \uE0B3
-    if [ "$theme_powerline_fonts" = "no" -a "$theme_nerd_fonts" != "yes" ]
-        set __bobthefish_left_arrow_glyph '<'
-    end
+    set -l __bobthefish_left_arrow_glyph \uE0B2
 
-    set_color black white
-    set_color -b red white
     __bobthefish_cmd_duration
 
-    set_color black white
+    set_color normal
     set_color -b white black --bold
+
     __bobthefish_timestamp
 
     set_color normal
