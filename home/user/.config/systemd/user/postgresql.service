@@ -21,11 +21,8 @@ ExecReload=/bin/kill -HUP ${MAINPID}
 KillMode=mixed
 KillSignal=SIGINT
 
-# Due to PostgreSQL's use of shared memory, OOM killer is often overzealous in
-# killing Postgres, so adjust it downward
 OOMScoreAdjust=-200
 
-# Additional security-related features
 PrivateTmp=true
 ProtectHome=false
 ProtectSystem=full
@@ -40,4 +37,4 @@ RestrictRealtime=true
 SystemCallArchitectures=native
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
