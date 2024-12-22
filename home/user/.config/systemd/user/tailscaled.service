@@ -31,4 +31,4 @@ SystemCallFilter=@known
 SystemCallFilter=~@clock @cpu-emulation @raw-io @reboot @mount @obsolete @swap @debug @keyring @mount @pkey
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
