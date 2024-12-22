@@ -1,35 +1,25 @@
-# Graphics
-
+aic94xx-firmware
+amdgpu-pro-oglp
 amf-amdgpu-pro
+ast-firmware
+bibata-cursor-theme
+bruno
+burpsuite
+gnome-shell-extension-arch-update
+google-chrome-beta
+insync
+jetbrains-toolbox
+kmscon
 lib32-amdgpu-pro-oglp
 lib32-vulkan-amdgpu-pro
-
-# Application
-
-burpsuite
-chrome-google-beta
-jetbrains-toolbox
-
-# Utility
-
-all-repository-fonts
-insync
+lokinet
 needrestart
 pam_ssh
 preload
-yay
-
-# Firmware
-
-aic94xx-firmware
-aic94xx-firmware
-ast-firmware
+python-conda
 upd72020x-fw
+vulkan-amdgpu-pro
 wd719x-firmware
-
-# Desktop
-
-bibata-cursor-theme
 yaru-colors-gtk-theme
 yaru-colors-icon-theme
 yaru-colors-wallpapers
@@ -37,7 +27,7 @@ yaru-gnome-shell-theme
 yaru-gtk-theme
 yaru-gtksourceview-theme
 yaru-icon-theme
-yaru-metacity-theme
 yaru-session
 yaru-sound-theme
-yaru-unity-theme
+yay
+yay-debug
