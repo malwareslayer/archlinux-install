@@ -1,0 +1,34 @@
+[Unit]
+Description=Tailscale node agent
+Documentation=https://tailscale.com/kb/
+Wants=network-pre.target
+After=network-pre.target NetworkManager.service systemd-resolved.service
+
+[Service]
+ExecStart=/usr/bin/tailscaled --state=/home/user/.local/share/tailscale/tailscaled.state --socket=/run/user/60466/tailscale/tailscaled.sock --port=41641
+ExecStopPost=/usr/bin/tailscaled --cleanup
+Restart=on-failure
+
+RuntimeDirectory=tailscale
+RuntimeDirectoryMode=0755
+StateDirectory=tailscale
+StateDirectoryMode=0700
+CacheDirectory=tailscale
+CacheDirectoryMode=0750
+Type=notify
+
+ProtectKernelModules=no
+DeviceAllow=/dev/tun
+DeviceAllow=/dev/net/tun
+AmbientCapabilities=CAP_NET_RAW CAP_NET_ADMIN
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+NoNewPrivileges=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+MemoryDenyWriteExecute=yes
+LockPersonality=yes
+SystemCallFilter=@known
+SystemCallFilter=~@clock @cpu-emulation @raw-io @reboot @mount @obsolete @swap @debug @keyring @mount @pkey
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,13 @@
+polkit.addRule(function(action, subject) {
+    if ((action.id == "org.freedesktop.resolve1.set-dns-servers" ||
+         action.id == "org.freedesktop.resolve1.set-domains" ||
+         action.id == "org.freedesktop.resolve1.set-default-route" ||
+         action.id == "org.freedesktop.resolve1.set-llmnr" ||
+         action.id == "org.freedesktop.resolve1.set-mdns" ||
+         action.id == "org.freedesktop.resolve1.set-dns-over-tls" ||
+         action.id == "org.freedesktop.resolve1.set-dnssec" ||
+         action.id == "org.freedesktop.resolve1.subscribe-query-results") &&
+        subject.user == "malwareslayer") {
+        return polkit.Result.YES;
+    }
+});
