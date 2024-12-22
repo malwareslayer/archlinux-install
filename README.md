@@ -65,15 +65,19 @@ homectl create <username> \
 After Installation
 
 ```
-homectl update <username> --capability-ambient-set=CAP_BPF CAP_PERFMON CAP_NET_BIND_SERVICE CAP_SYS_NICE CAP_SYS_TIME
+sudo homectl update <user> --member-of="adm,audio,dbus,network,power,realtime,render,storage,uuidd,video,wheel"
 ```
 
 ```
-omectl update <user> \
+sudo homectl update <user> --capability-ambient-set="CAP_NET_ADMIN CAP_NET_RAW CAP_NET_BIND_SERVICE CAP_SYS_NICE CAP_SYS_TIME CAP_PERFMON CAP_BPF"
+```
+
+```
+homectl update <user> \
              --setenv="AMD_VULKAN_ICD=RADV" \
              --setenv="GALLIUM_DRIVER=zink" \
              --setenv="GDK_BACKEND=wayland" \
-             --setenv="GNOME_KEYRING_CONTROL=/run/user/60466/keyring" \
+             --setenv="GNOME_KEYRING_CONTROL=/run/user/$(id -u)/keyring" \
              --setenv="GOBIN=$HOME/.local/bin" \
              --setenv="GOCACHE=$XDG_CACHE_HOME/go/" \
              --setenv="GOMODCACHE=$XDG_DATA_HOME/go/pkg/mod" \
@@ -83,7 +87,7 @@ omectl update <user> \
              --setenv="QT_AUTO_SCREEN_SCALE_FACTOR=1" \
              --setenv="QT_QPA_PLATFORM=wayland" \
              --setenv="QT_QPA_PLATFORMTHEME=qt5ct" \
-             --setenv="SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh" \
+             --setenv="SSH_AUTH_SOCK=/run/user/$(id -u)/gnupg/S.gpg-agent.ssh" \
              --setenv="VDPAU_DRIVER=radeonsi" \
              --setenv="VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/amd_pro_icd32.json:/usr/share/vulkan/icd.d/amd_pro_icd64.json:/usr/share/vulkan/icd.d/radeon_icd.i686.json:/usr/share/vulkan/icd.d/radeon_icd.x86_64.json:/usr/share/vulkan/icd.d/lvp_icd.i686.json:/usr/share/vulkan/icd.d/lvp_icd.x86_64.json" \
              --setenv="XDG_CACHE_HOME=$HOME/.cache" \
@@ -114,6 +118,8 @@ UUID=XXXX-XXXX          /efi            vfat            rw,relatime,fmask=0137,d
 UUID=XXXX-XXXX          /boot           vfat            rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro  0 2
 
 tmpfs                   /dev/shm        tmpfs           rw,relatime,size=16G 0 0
+
+tmpfs                   /run            tmpfs           rw,relatime,size=16G 0 0
 
 tmpfs                   /tmp            tmpfs           rw,relatime,size=8G 0 0
 ```
