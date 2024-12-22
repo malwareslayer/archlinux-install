@@ -7,7 +7,7 @@ polkit.addRule(function(action, subject) {
          action.id == "org.freedesktop.resolve1.set-dns-over-tls" ||
          action.id == "org.freedesktop.resolve1.set-dnssec" ||
          action.id == "org.freedesktop.resolve1.subscribe-query-results") &&
-        subject.user == "malwareslayer") {
+        subject.user == "<user>") {
         return polkit.Result.YES;
     }
 });
