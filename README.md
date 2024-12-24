@@ -65,15 +65,15 @@ homectl create <username> \
 After Installation
 
 ```
-sudo homectl update <user> --member-of="adm,audio,dbus,network,power,realtime,render,storage,uuidd,video,wheel"
+sudo homectl update user --member-of="adm,audio,dbus,network,power,realtime,render,storage,uuidd,video,wheel"
 ```
 
 ```
-sudo homectl update <user> --capability-ambient-set="CAP_NET_ADMIN CAP_NET_RAW CAP_NET_BIND_SERVICE CAP_SYS_NICE CAP_SYS_TIME CAP_PERFMON CAP_BPF"
+sudo homectl update user --capability-ambient-set="CAP_NET_ADMIN CAP_NET_RAW CAP_NET_BIND_SERVICE CAP_SYS_NICE CAP_SYS_TIME CAP_PERFMON CAP_BPF"
 ```
 
 ```
-homectl update <user> \
+homectl update user \
              --setenv="AMD_VULKAN_ICD=RADV" \
              --setenv="GALLIUM_DRIVER=zink" \
              --setenv="GDK_BACKEND=wayland" \
@@ -110,8 +110,6 @@ homectl update <user> \
 # <file system> <dir> <type> <options> <dump> <pass>
 
 UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX       /               ext4            rw,relatime,journal_checksum,delalloc,data=ordered,discard     0 1
-
-UUID=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX       /home/<user>    ext4            rw,relatime,journal_checksum,delalloc,data=ordered,discard     0 1
 
 UUID=XXXX-XXXX          /efi            vfat            rw,relatime,fmask=0137,dmask=0027,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro  0 2
 
