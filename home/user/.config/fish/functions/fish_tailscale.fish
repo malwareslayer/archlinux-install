@@ -1,6 +1,6 @@
 function fish_tailscale -d 'Show Status Tailscale'
     set --local _hostname "$(hostnamectl hostname)"
-    set --local _devices "$(tailscale --socket /run/user/60466/tailscale/tailscaled.sock status | awk '/^\s*$/ {exit} {print}')"
+    set --local _devices "$(tailscale --socket /run/user/$(id -u)/tailscale/tailscaled.sock status | awk '/^\s*$/ {exit} {print}')"
     set --local _total "$(echo "$_devices" | wc -l)"
     set --local _offline "$(echo "$_devices" | grep -c 'offline')"
 
