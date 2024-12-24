@@ -1,0 +1,21 @@
+[Unit]
+Description=cloudflared
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=notify
+ExecStart=/usr/bin/cloudflared --no-autoupdate tunnel run
+Restart=on-failure
+RestartSec=32s
+
+AmbientCapabilities=CAP_NET_RAW CAP_NET_ADMIN
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+NoNewPrivileges=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+MemoryDenyWriteExecute=yes
+LockPersonality=yes
+
+[Install]
+WantedBy=default.target
