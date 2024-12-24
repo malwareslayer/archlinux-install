@@ -269,16 +269,17 @@ tmux_conf_theme_right_separator_sub='\uE0B3'  #   PowerlineSymbols.otf font, see
 #     - #{username_ssh}
 tmux_conf_theme_status_left=" ❐ #S | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} "
 #tmux_conf_theme_status_left=" ❐ #S | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} | #{pretty_pane_current_path} "
-tmux_conf_theme_status_right=" #{pairing} #{synchronized} | 🖥  #(tailscale --socket /run/user/60466/tailscale/tailscaled.sock status | awk 'END { print NR - counting }' counting=$(tailscale --socket /run/user/60466/tailscale/tailscaled.sock status | grep -c 'offline')) | #{prefix} | #{mouse} | #{username}#{root} | #{hostname} "
+tmux_conf_theme_status_right=" #{pairing} #{synchronized} | #{prefix} | #{mouse} | 🌐 #(fish --command 'fish_zerotier') | 🖥  #(fish --command 'fish_tailscale') | #{username}#{root} | #{hostname} "
+
 # status left style
 tmux_conf_theme_status_left_fg="$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_7,$tmux_conf_theme_colour_8"
 tmux_conf_theme_status_left_bg="$tmux_conf_theme_colour_9,$tmux_conf_theme_colour_10,$tmux_conf_theme_colour_11"
-tmux_conf_theme_status_left_attr="bold,none,none"
+tmux_conf_theme_status_left_attr="bold,bold,none"
 
 # status right style
-tmux_conf_theme_status_right_fg="$tmux_conf_theme_colour_12,$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_8,$tmux_conf_theme_colour_13,$tmux_conf_theme_colour_6"
-tmux_conf_theme_status_right_bg="$tmux_conf_theme_colour_15,$tmux_conf_theme_colour_11,$tmux_conf_theme_colour_4,$tmux_conf_theme_colour_13,$tmux_conf_theme_colour_16,$tmux_conf_theme_colour_9"
-tmux_conf_theme_status_right_attr="none,bold,bold,bold,bold,bold"
+tmux_conf_theme_status_right_fg="#8a8a8a,#303030,#303030,#303030,#ffffff,#303030,#303030"
+tmux_conf_theme_status_right_bg="#080808,#ffffff,#ffffff,#ffb441,#303030,#00afff,#ffff00"
+tmux_conf_theme_status_right_attr="bold,bold,bold,bold,bold,bold,bold"
 
 # pairing indicator
 tmux_conf_theme_pairing="⚇"                 # U+2687
