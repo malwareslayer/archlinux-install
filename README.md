@@ -23,7 +23,7 @@ vgcreate --physicalextentsize 16m home /dev/nvmeXnYpZ
 For `root`
 
 ```
-lvcreate -l+100%FREE --name root system
+lvcreate -l+100%FREE --name system root
 ```
 
 ## File System
@@ -39,7 +39,7 @@ mkfs.fat -F 32 /dev/nvmeXnYpZ
 For `root`
 
 ```
-mkfs.ext4 -O 64bit,bigalloc,dir_index,dir_nlink,ea_inode,ext_attr,extent,encrypt,extra_isize,fast_commit,filetype,flex_bg,has_journal,huge_file,inline_data,large_dir,large_file,metadata_csum,metadata_csum_seed,orphan_file,orphan_present,resize_inode,sparse_super,sparse_super2,stable_inodes,verity /dev/X/Y
+mkfs.ext4 -O 64bit,bigalloc,dir_index,dir_nlink,ea_inode,ext_attr,extent,encrypt,extra_isize,fast_commit,filetype,flex_bg,has_journal,huge_file,inline_data,large_dir,large_file,metadata_csum,metadata_csum_seed,orphan_file,orphan_present,resize_inode,sparse_super,sparse_super2,stable_inodes,verity /dev/system/root
 ```
 
 For `<username>`
@@ -65,15 +65,15 @@ homectl create <username> \
 After Installation
 
 ```
-sudo homectl update user --member-of="adm,audio,dbus,network,power,realtime,render,storage,uuidd,video,wheel"
+sudo homectl update $USER --member-of="adm,audio,dbus,network,power,realtime,render,storage,uuidd,video,wheel"
 ```
 
 ```
-sudo homectl update user --capability-ambient-set="CAP_NET_ADMIN CAP_NET_RAW CAP_NET_BIND_SERVICE CAP_SYS_NICE CAP_SYS_TIME CAP_PERFMON CAP_BPF"
+sudo homectl update $USER --capability-ambient-set="CAP_NET_ADMIN CAP_NET_RAW CAP_NET_BIND_SERVICE CAP_SYS_NICE CAP_SYS_TIME CAP_PERFMON CAP_BPF"
 ```
 
 ```
-homectl update user \
+homectl update $USER \
              --setenv="AMD_VULKAN_ICD=RADV" \
              --setenv="GALLIUM_DRIVER=zink" \
              --setenv="GDK_BACKEND=wayland" \

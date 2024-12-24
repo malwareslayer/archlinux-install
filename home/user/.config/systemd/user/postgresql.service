@@ -8,10 +8,10 @@ Wants=network-online.target
 Type=notify
 TimeoutSec=120
 
-Environment=PGROOT=/home/user/<custom>/postgres
+Environment=PGROOT=%h/Database/postgres
 
 SyslogIdentifier=postgres
-PIDFile=/home/user/<custom>/postgres/data/postmaster.pid
+PIDFile=%h/Database/postgres/data/postmaster.pid
 RuntimeDirectory=postgresql
 RuntimeDirectoryMode=0755
 
