@@ -56,8 +56,11 @@ homectl create <username> \
     --storage=luks \
     --luks-discard=true \
     --luks-offline-discard=true \
+    --luks-sector-size=512 \
     --luks-pbkdf-type=argon2id \
     --luks-pbkdf-hash-algorithm=sha256 \
+    --luks-pbkdf-memory-cost=512M \
+    --luks-pbkdf-parallel-threads 4 \
     --home-dir="/home/<user name>" \
     --image-path=/dev/nvmeXnY
 ```
