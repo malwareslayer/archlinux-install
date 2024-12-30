@@ -9,12 +9,17 @@ Restart=on-failure
 RestartSec=32s
 
 AmbientCapabilities=CAP_NET_RAW CAP_NET_ADMIN
+
+LockPersonality=true
+
+NoNewPrivileges=true
+
+MemoryDenyWriteExecute=true
+
 RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
-NoNewPrivileges=yes
-RestrictRealtime=yes
-RestrictSUIDSGID=yes
-MemoryDenyWriteExecute=yes
-LockPersonality=yes
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
 
 [Install]
 WantedBy=default.target

@@ -1,32 +1,42 @@
 [Unit]
 Description=Tailscale node agent
 Documentation=https://tailscale.com/kb/
-Wants=network-pre.target
 After=network-pre.target NetworkManager.service systemd-resolved.service
+Wants=network-pre.target
 
 [Service]
-ExecStart=/usr/bin/tailscaled --state=%h/.local/share/tailscale/tailscaled.state --socket=/run/user/%U/tailscale/tailscaled.sock --port=41641
-ExecStopPost=/usr/bin/tailscaled --cleanup
-Restart=on-failure
+Type=notify
+
+CacheDirectory=tailscale
+CacheDirectoryMode=0750
 
 RuntimeDirectory=tailscale
 RuntimeDirectoryMode=0755
+
 StateDirectory=tailscale
 StateDirectoryMode=0700
-CacheDirectory=tailscale
-CacheDirectoryMode=0750
-Type=notify
 
-ProtectKernelModules=no
+ExecStart=/usr/bin/tailscaled --state=%h/.local/share/tailscale/tailscaled.state --socket=/run/user/%U/tailscale/tailscaled.sock --port=41641
+ExecStopPost=/usr/bin/tailscaled --cleanup
+Restart=on-failure
+RestartSec=32s
+
+AmbientCapabilities=CAP_NET_RAW CAP_NET_ADMIN
+
 DeviceAllow=/dev/tun
 DeviceAllow=/dev/net/tun
-AmbientCapabilities=CAP_NET_RAW CAP_NET_ADMIN
+
+LockPersonality=true
+
+NoNewPrivileges=true
+
+MemoryDenyWriteExecute=true
+
 RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
-NoNewPrivileges=yes
-RestrictRealtime=yes
-RestrictSUIDSGID=yes
-MemoryDenyWriteExecute=yes
-LockPersonality=yes
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+
 SystemCallFilter=@known
 SystemCallFilter=~@clock @cpu-emulation @raw-io @reboot @mount @obsolete @swap @debug @keyring @mount @pkey
 
