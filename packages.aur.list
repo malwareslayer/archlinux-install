@@ -1,13 +1,15 @@
+010editor
 aic94xx-firmware
 amdgpu-pro-oglp
 amf-amdgpu-pro
 ast-firmware
 bibata-cursor-theme
 bruno
-burpsuite
+ghidra-desktop
 gnome-shell-extension-arch-update
 google-chrome-beta
 insync
+java17-openjfx
 jetbrains-toolbox
 kmscon
 lib32-amdgpu-pro-oglp
@@ -17,6 +19,8 @@ needrestart
 pam_ssh
 preload
 python-conda
+recaf
+spacedrive
 upd72020x-fw
 vulkan-amdgpu-pro
 wd719x-firmware
@@ -30,3 +34,5 @@ yaru-icon-theme
 yaru-session
 yaru-sound-theme
 yay
+yay-debug
+zaproxy-desktop
