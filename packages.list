@@ -4,17 +4,18 @@ baobab
 base
 base-devel
 bash-completion
+bat
 bluez
 bluez-utils
 bolt
 certbot
 cloudflared
+csvkit
 dhclient
 egl-gbm
 egl-wayland
 egl-x11
 evince
-firewalld
 fish
 fwbuilder
 fwupd
@@ -85,6 +86,8 @@ linux-firmware-liquidio
 linux-firmware-mellanox
 linux-firmware-nfp
 linux-firmware-qlogic
+linux-lqx
+linux-lqx-headers
 linux-zen
 linux-zen-headers
 loupe
@@ -94,6 +97,8 @@ man-db
 meld
 mesa
 mesa-utils
+miller
+mitmproxy
 mkcert
 multipath-tools
 nautilus
@@ -104,6 +109,7 @@ networkmanager
 nmap
 nss-mdns
 nvme-cli
+obsidian
 orca
 pavucontrol
 pipewire
@@ -205,6 +211,8 @@ rrdtool
 rsync
 rtkit
 rygel
+rz-cutter
+rz-ghidra
 sbctl
 seahorse
 seahorse-nautilus
@@ -226,8 +234,10 @@ tmux
 tor
 totem
 traceroute
+trash-cli
 tree
 udisks2
+vagrant
 vdpauinfo
 vulkan-icd-loader
 vulkan-mesa-layers
@@ -240,6 +250,7 @@ wget
 whois
 wireless-regdb
 wireplumber
+wireshark-qt
 wl-clipboard
 xdg-desktop-portal-gnome
 xdg-user-dirs-gtk
