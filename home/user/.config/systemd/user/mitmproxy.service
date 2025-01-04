@@ -1,0 +1,16 @@
+[Unit]
+Description=Mitm Proxy
+After=network-pre.target NetworkManager.service systemd-resolved.service
+Wants=network-pre.target
+
+[Service]
+Type=simple
+
+ExecStart=/usr/bin/mitmweb --listen-host 0.0.0.0 --listen-port 1081 --web-port 1082 --anticache --no-web-open-browser
+Restart=on-failure
+RestartSec=32s
+
+AmbientCapabilities=CAP_NET_RAW CAP_NET_ADMIN
+
+[Install]
+WantedBy=default.target
