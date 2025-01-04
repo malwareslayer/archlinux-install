@@ -6,7 +6,5 @@ channel_priority: strict
 create_default_packages:
   - python
   - pip
-  - ipython
-  - marimo
-  - sage
+  - wheel
 changeps1: false
