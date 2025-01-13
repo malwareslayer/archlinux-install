@@ -1,8 +1,6 @@
 if status is-interactive
   if not test -n "$TMUX"
-    tmux new
-  else
-    tmux attach
+    tmux new || tmux attach
   end
 end
 
