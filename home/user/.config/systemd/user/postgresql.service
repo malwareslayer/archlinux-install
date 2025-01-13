@@ -7,12 +7,12 @@ Wants=network-online.target
 [Service]
 Type=notify
 TimeoutSec=120
-Environment=PGROOT=%h/.local/share/postgres
+Environment=PGROOT=%h/.local/lib/postgres
 
 RuntimeDirectory=postgresql
 RuntimeDirectoryMode=0755
 
-PIDFile=%h/.local/share/postgres/data/postmaster.pid
+PIDFile=%h/.local/lib/postgres/data/postmaster.pid
 
 ExecStartPre=/usr/bin/postgresql-check-db-dir ${PGROOT}/data
 ExecStart=/usr/bin/postgres -D ${PGROOT}/data

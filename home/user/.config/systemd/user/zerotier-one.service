@@ -4,7 +4,7 @@ After=network-online.target network.target
 Wants=network-online.target
 
 [Service]
-ExecStart=/usr/bin/zerotier-one -U %h/.local/share/zerotier-one
+ExecStart=/usr/bin/zerotier-one -U %h/.local/lib/zerotier-one
 Restart=on-failure
 RestartSec=32s
 
