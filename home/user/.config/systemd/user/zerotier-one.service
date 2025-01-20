@@ -4,19 +4,21 @@ After=network-online.target network.target
 Wants=network-online.target
 
 [Service]
+Type=exec
 ExecStart=/usr/bin/zerotier-one -U %h/.local/lib/zerotier-one
 Restart=on-failure
 RestartSec=32s
 
-AmbientCapabilities=CAP_NET_RAW CAP_NET_ADMIN
+AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_NET_RAW CAP_NET_ADMIN
+
+DeviceAllow=/dev/tun
+DeviceAllow=/dev/net/tun
 
 LockPersonality=true
 
-NoNewPrivileges=true
-
 MemoryDenyWriteExecute=true
 
-RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK AF_UNSPEC
 RestrictNamespaces=true
 RestrictRealtime=true
 RestrictSUIDSGID=true
