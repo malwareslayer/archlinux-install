@@ -1,0 +1,13 @@
+[Unit]
+Description=code-server
+After=network.target
+
+[Service]
+Type=exec
+ExecStart=/usr/bin/firejail --profile=code-server /usr/bin/code-server "%h/Documents/Workspaces Shared"
+Restart=on-failure
+RestartSec=32s
+
+[Install]
+WantedBy=default.target
+
