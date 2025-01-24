@@ -7,12 +7,16 @@ Wants=network-online.target
 [Service]
 Type=notify
 TimeoutSec=120
-Environment=PGROOT=%h/.local/lib/postgres
+
+StateDirectory=postgres
+StateDirectoryMode=0700
 
 RuntimeDirectory=postgresql
 RuntimeDirectoryMode=0755
 
-PIDFile=%h/.local/lib/postgres/data/postmaster.pid
+PIDFile=%h/.local/state/postgres/data/postmaster.pid
+
+Environment=PGROOT=%h/.local/state/postgres
 
 ExecStartPre=/usr/bin/postgresql-check-db-dir ${PGROOT}/data
 ExecStart=/usr/bin/postgres -D ${PGROOT}/data
@@ -21,9 +25,7 @@ ExecReload=/bin/kill -HUP ${MAINPID}
 KillMode=mixed
 KillSignal=SIGINT
 
-AmbientCapabilities=CAP_NET_RAW CAP_NET_ADMIN
-
-NoNewPrivileges=true
+AmbientCapabilities=CAP_NET_RAW CAP_NET_ADMIN CAP_DAC_OVERRIDE
 
 OOMScoreAdjust=-200
 
@@ -39,8 +41,6 @@ RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
 RestrictNamespaces=true
 RestrictRealtime=true
 RestrictSUIDSGID=true
-
-SystemCallArchitectures=native
 
 [Install]
 WantedBy=default.target
