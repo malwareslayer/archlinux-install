@@ -4,6 +4,9 @@ After=network.target
 
 [Service]
 Type=exec
+
+Environment=PORT=8081
+
 ExecStart=/usr/bin/firejail --profile=code-server /usr/bin/code-server "%h/Documents/Workspaces Shared"
 Restart=on-failure
 RestartSec=32s
