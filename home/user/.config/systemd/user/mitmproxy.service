@@ -5,12 +5,12 @@ Wants=network-pre.target
 
 [Service]
 Type=exec
-ExecStart=/usr/bin/mitmweb --listen-host 127.0.0.1 --listen-port 1081 --web-host 127.0.0.1 --web-port 8081 --anticache --no-web-open-browser
+ExecStart=/usr/bin/mitmweb --listen-host 127.0.0.1 --listen-port 1081 --web-host 127.0.0.1 --web-port 8080 --anticache --no-web-open-browser
 Restart=on-failure
 RestartSec=32s
 
 AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_NET_RAW CAP_NET_ADMIN
-RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK AF_UNSPEC
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
 
 [Install]
 WantedBy=default.target
